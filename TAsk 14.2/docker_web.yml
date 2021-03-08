@@ -1,0 +1,17 @@
+- hosts: docker
+  vars:
+    - file_name: Task14.html
+  tasks:
+    - name: "Installing Httpd"
+      package:
+        name: "httpd"
+        state: present
+
+    - name: "Deploying webpage to /var/www/html"
+      copy: 
+        src: "{{ file_name }}"
+        dest: "/var/www/html"
+
+    - name: "Starting httpd Service"
+      command: "/usr/sbin/httpd"
+
